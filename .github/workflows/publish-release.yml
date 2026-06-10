@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
         lfs: false
@@ -32,9 +32,7 @@ jobs:
         git push origin $TAG_NAME
 
     - name: Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
-        files: |
-          imgs.tar.gz
+        files: imgs.tar.gz
         tag_name: ${{ steps.tag.outputs.TAG_NAME }}
-        token: ${{ secrets.PUSH_TOKEN }}
